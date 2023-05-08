@@ -8,6 +8,10 @@ export class App extends Component {
     contacts: [],
   };
 
+  handlerFormSubmit = data => {
+    console.log(data);
+  };
+
   // addContact = (name, number) => {
   //   const newContact = {
   //     name,
@@ -23,7 +27,7 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <Form title="Phonebook"></Form>
+        <Form onSubmit={this.handlerFormSubmit} title="Phonebook"></Form>
         <ContactsList title="Contacts"></ContactsList>
       </div>
     );

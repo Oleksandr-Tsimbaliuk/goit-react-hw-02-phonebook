@@ -3,6 +3,7 @@ import { StyledForm } from './Form.styled';
 
 export default class Form extends Component {
   state = {
+    contacts: [],
     name: '',
   };
 

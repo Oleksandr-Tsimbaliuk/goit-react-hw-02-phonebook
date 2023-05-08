@@ -1,3 +1,16 @@
-export const App = () => {
-  return <div>React homework template</div>;
-};
+import React, { Component } from 'react';
+import Form from './Form/Form';
+
+export class App extends Component {
+  state = {
+    contacts: [],
+  };
+
+  render() {
+    return (
+      <div>
+        <Form title="Phonebook"></Form>
+      </div>
+    );
+  }
+}

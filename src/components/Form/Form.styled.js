@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const StyledForm = styled.form`
   display: flex;
+  align-items: center;
   flex-direction: column;
   max-width: 350px;
   width: 100%;
@@ -12,6 +13,7 @@ export const StyledForm = styled.form`
 
   .form-label {
     display: flex;
+    flex-direction: column;
     gap: 10px;
   }
 

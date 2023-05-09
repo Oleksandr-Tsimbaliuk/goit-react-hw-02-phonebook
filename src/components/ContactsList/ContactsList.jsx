@@ -1,32 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Contact from 'components/Contact/Contact';
+import { StyledContactsList, StyledContactsTitle } from './ContactsList.styled';
 
 function ContactsList({ title, contacts, deleteContact }) {
   return (
     <>
-      <h2>{title}</h2>
-      <ul>
-        {contacts.map(contact => {
+      <StyledContactsTitle>{title}</StyledContactsTitle>
+      <StyledContactsList>
+        {contacts.map(({ name, id, number }) => {
           return (
-            <li key={contact.id}>
-              <div>
-                <p>
-                  {contact.name}: <span>{contact.number}</span>
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    deleteContact(contact.id);
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
-            </li>
+            <Contact
+              key={id}
+              name={name}
+              id={id}
+              number={number}
+              deleteContact={deleteContact}
+            ></Contact>
           );
         })}
-      </ul>
+      </StyledContactsList>
     </>
   );
 }
 
 export default ContactsList;
+
+ContactsList.propType = {
+  deleteContact: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  contacts: PropTypes.arrayOf({
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    number: PropTypes.number.isRequired,
+  }).isRequired,
+};

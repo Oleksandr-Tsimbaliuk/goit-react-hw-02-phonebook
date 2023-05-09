@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { nanoid } from 'nanoid';
 import Form from './Form';
 import ContactsList from './ContactsList';
 import Filter from './Filter';
@@ -33,10 +32,10 @@ export class App extends Component {
   };
 
   filteredContacts = () => {
-    // this.state.filter.toLowerCase();
+    const { filter, contacts } = this.state;
 
-    return this.state.contacts.filter(contact =>
-      contact.name.toLowerCase().includes(this.state.filter.toLowerCase())
+    return contacts.filter(({ name }) =>
+      name.toLowerCase().includes(filter.toLowerCase())
     );
   };
 
@@ -48,8 +47,6 @@ export class App extends Component {
 
   render() {
     const value = this.filteredContacts();
-    console.log(value);
-    // console.log(this.state.contacts);
     return (
       <div>
         <Form onSubmit={this.handlerFormSubmit} title="Phonebook"></Form>

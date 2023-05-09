@@ -9,8 +9,9 @@ function ContactsList({ title, contacts }) {
           return (
             <li key={contact.id}>
               <div>
-                <p>{contact.name}</p>
-                <p>{contact.number}</p>
+                <p>
+                  {contact.name}: <span>{contact.number}</span>
+                </p>
               </div>
             </li>
           );

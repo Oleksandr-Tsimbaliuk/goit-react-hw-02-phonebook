@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ContactsList({ title, contacts }) {
+function ContactsList({ title, contacts, deleteContact }) {
   return (
     <>
       <h2>{title}</h2>
@@ -12,6 +12,14 @@ function ContactsList({ title, contacts }) {
                 <p>
                   {contact.name}: <span>{contact.number}</span>
                 </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    deleteContact(contact.id);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             </li>
           );

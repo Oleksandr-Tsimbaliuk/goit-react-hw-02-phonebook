@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyledForm } from './Form.styled';
+import { nanoid } from 'nanoid';
 
 export default class Form extends Component {
   state = {
@@ -7,17 +8,31 @@ export default class Form extends Component {
     number: '',
   };
 
-  handleInputName = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
-  handleInputNamber = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
+  // handleInputName = ({ target: { name, value } }) => {
+  //   this.setState({ [name]: value });
+  // };
+  // handleInputNamber = ({ target: { name, value } }) => {
+  //   this.setState({ [name]: value });
+  // };
+
+  handleInputName = event => [
+    this.setState({ name: event.currentTarget.value }),
+  ];
+
+  handleInputNamber = event => {
+    this.setState({ number: event.currentTarget.value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
 
-    this.props.onSubmit(this.state);
+    const contactData = {
+      name: this.state.name,
+      number: this.state.number,
+      id: nanoid(),
+    };
+
+    this.props.onSubmit(contactData);
 
     this.reset();
   };
@@ -43,7 +58,7 @@ export default class Form extends Component {
           />
         </label>
 
-        <label>
+        <label className="form-label">
           <span>Number</span>
           <input
             type="tel"
